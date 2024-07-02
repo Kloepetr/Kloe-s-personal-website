@@ -1,58 +1,415 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-size: cover;
+  background-image: url("https://img.freepik.com/free-vector/gradient-background-green-tones_23-2148373508.jpg");
 }
 
 nav {
-    position: fixed;
-    width: 100%;
-    background-color: #333;
-    padding: 10px 0;
-    top: 0;
-    z-index: 1000;
+  justify-content: space-around;
+  align-items: center;
+  height: 30px;
+  margin-top: 30px;
+
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
-nav ul li {
-    margin: 0 15px;
+.nav-links {
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
+a {
+  color: rgb(47, 104, 34);
+  text-decoration: none;
+  text-decoration-color: white;
 }
 
-nav ul li a:hover {
-    background-color: #575757;
+a:hover {
+  color: rgb(204, 214, 67);
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
 }
 
 section {
-    padding: 60px 20px;
-    margin-top: 60px;
+  padding: 60px 20px;
+  margin-top: 60px;
+  height: 100vh; /* Make each section cover the entire viewport height */
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.logo:hover {
+  cursor: default;
+}
+
+#profile {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    margin-left: 10rem;
+    gap: 2rem; /* Reduced gap to bring text closer to the image */
+    height: 40vh;
+  }
+  
+  .section__pic-container {
+    width: 40%; /* Adjusted width to ensure image doesn't take too much space */
+    object-fit: cover; /* Ensures the image covers the container */
+    border-radius: 50%; /* Makes the image round */
+  }
+.section__text {
+  align-self: center;
+  text-align: center;
+}
+
+.section__text p {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.section__text__p1 {
+  text-align: center;
+
+}
+
+.section__text__p2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  color:rgb(16, 45, 5);
+}
+
+#socials-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+/* ICONS */
+
+.icon {
+  cursor: pointer;
+  height: 2rem;
+}
+
+/* BUTTONS */
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  font-weight: 600;
+  transition: all 300ms ease;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+}
+
+/* Basic button styling */
+.resumebtn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: white;
+  border-radius: 2rem;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Create the shiny effect */
+.resumebtn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(8, 215, 222, 0.2);
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Animate the shiny effect */
+.resumebtn:hover::before {
+  top: 0;
+  left: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-color-1 {
+  border: rgb(53, 53, 53) 0.1rem solid;
+  background-color: rgb(49, 133, 21);
+}
+
+.btn-color-2 {
+  border: rgb(53, 53, 53) 0.1rem solid;
+  background-color: rgb(4, 184, 73);
+}
+
+.btn-color-1:hover,
+.btn-color-2:hover {
+  cursor: pointer;
+}
+
+.btn-color-1:hover {
+  background: rgb(180, 81, 182);
+  color: white;
+}
+
+.btn-color-2:hover {
+  background: rgb(55, 106, 44);
+  color: white;
+}
+
+.btn-color-2 {
+  background: none;
+}
+
+.btn-color-2:hover {
+  border: rgb(255, 255, 255) 0.1rem solid;
+}
+
+.btn-container {
+  gap: 1rem;
 }
 
 #section1 {
-    background-color: #f1f1f1;
+  background-size: cover;
+  background-image: url("background3.jpg");
 }
 
 #section2 {
-    background-color: #e2e2e2;
+  background-image: url("https://i.pinimg.com/originals/1b/bf/23/1bbf23556515eabf7529ae6c3b54570c.jpg");
+  background-size: cover;
 }
 
 #section3 {
-    background-color: #d3d3d3;
+  background-image:url("https://i.pinimg.com/originals/f5/9a/ce/f59ace2890f543279cf3a3308dbbc85a.jpg");
+  background-size: cover;
+  color: white;
+  font-weight: 300;
 }
 
 #section4 {
-    background-color: #c4c4c4;
+  background-color: #c4c4c4;
+  background-size: cover;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+#about {
+    position: relative;
+  }
+  
+  .about-containers {
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .about-details-container {
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .about-containers,
+  .about-details-container {
+    display: flex;
+  }
+  
+  .about-pic {
+    border-radius: 2rem;
+    width:450px;
+    height:600px;
+  }
+
+
+  .container {
+	padding: 2rem;
+}
+
+.slider-wrapper {
+	position: relative;
+	max-width: 48rem;
+	margin: 0 auto;
+}
+
+.slider {
+	display: flex;
+	aspect-ratio: 16 / 9;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+	border-radius: 0.5rem;
+	-ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+	scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body {
+    background-color: #f8fafc;
+}
+
+.container {
+    padding: 2rem;
+}
+
+.slider-wrapper {
+
+    max-width: 150rem; /* Increase max-width for a larger slider */
+    max-height: 200rem;
+}
+
+.slider {
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+    -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    width: 100%; /* Take full width of .slider-wrapper */
+    height: 95vh; /* Set a larger height (adjust as needed) */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+.slider-nav {
+    display: flex; /* Correct 'full' to 'flex' for display */
+    justify-content: center; /* Center align the navigation */
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider-nav a {
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5; /* Adjust initial opacity as needed */
+    transition: opacity ease 250ms;
+    margin: 0 0.5rem; /* Adjust margin between navigation items */
+    padding: 0.5rem; /* Adjust padding for better touch/click target */
+}
+
+.slider-nav a:hover {
+    opacity: 1;
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+    margin-top: 0; /* Remove top margin */
+}
+
+.slide {
+    position: relative;
+    display: inline-block;
+}
+
+.slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.slide-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.slide:hover .slide-title {
+    opacity: 0.7;
+}
+
+.slide-title h1 {
+    color: white;
+    font-size: 24px;
+}
+
+#experience {
+    position: relative;
+  }
+  
+  .experience-sub-title {
+    color: rgb(85, 85, 85);
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    background-color: rgb(255, 255, 255,0.1);
+  }
+  
+  .experience-details-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .article-container {
+    display: flex;
+    text-align: initial;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: space-around;
+  }
+  
+  article {
+    display: flex;
+    width: 10rem;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+  
+  article .icon {
+    cursor: default;
+  }
+  

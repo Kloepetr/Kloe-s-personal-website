@@ -5,34 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smooth Scrolling Navigation</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#section1">Section 1</a></li>
-            <li><a href="#section2">Section 2</a></li>
-            <li><a href="#section3">Section 3</a></li>
-            <li><a href="#section4">Section 4</a></li>
-        </ul>
-    </nav>
+    <!-- Button to return to the top -->
+    <a href="#section1" style="position: fixed; top: 300px; left: 10px; z-index: 1000;">
+        <img src="https://i.pinimg.com/originals/d0/26/33/d02633165f5e01329cd074d9265f1ce8.gif" alt="Return to top" height="100>
+    </a>
+    
+    <nav id="desktop-nav">
+        <div class="logo"></div>
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li><a href="#section2">About</a></li>
+              <li><a href="experience.html">Experience</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="journey.html">My Journey</a></li>
+              <li><a href="sources.html">Sources</a></li>
+            </ul>
+          </div>
+        </nav>
+      </nav>
     
     <section id="section1">
-        <h2>Section 1</h2>
-        <p>This is Section 1.</p>
+        <section id="profile">
+            <div class="section__pic-container">
+              <img src="./assets/profile-pic.png" alt="Kloe's profile picture" />
+            </div>
+            <div class="section__text">
+              <p class="section__text__p1">Hello, I'm</p>
+              <h1 class="title">Kloe Wang</h1>
+              <p class="section__text__p2">Student at Indiana University, IN</p>
+              <div class="btn-container">
+                <button 
+                  class="resumebtn"
+                  onclick="window.open('assets/resume-example.png')"
+                >
+                  My resume
+                </button>
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">
+                  Contact Info
+                </button>
+              </div>
+              <div id="socials-container">
+                <img
+                  src="./assets/linkedin.png"
+                  alt="My LinkedIn profile"
+                  class="icon"
+                  onclick="location.href='https://linkedin.com/'"
+                />
+                <img
+                  src="./assets/github.png"
+                  alt="My Github profile"
+                  class="icon"
+                  onclick="location.href='https://github.com/'"
+                />
+                <a href="#section2">
+                    <img src="https://cdn.pixabay.com/animation/2022/10/27/12/59/12-59-10-594_512.gif"
+                     alt="Learn More" 
+                     style="display: flex;
+                            justify-content: 50%;
+                            align-items: 20%;
+                            position: absolute;
+                            bottom: 20px;
+                            width: 100%;width: 50px; height: 50px; vertical-align: middle; margin-right: 0.2rem;" />
+                  </a>
+              </div>
+            </div>
+          </section>
     </section>
     <section id="section2">
-        <h2>Section 2</h2>
-        <p>This is Section 2.</p>
+        <section id="about">
+            <p class="section__text__p1" style="font-size: 30px;">Get To Know More</p>
+            <h1 class="title">About Me</h1>
+            <div class="section-container" style="display: flex; align-items: center;">
+                <div class="section__pic-container" style="flex: 1;">
+                    <img
+                        src="./assets/about-pic.png"
+                        alt="Profile picture"
+                        class="about-pic"
+                        style="max-width: 100%; height: auto;"
+                    />
+                </div>
+                <div class="section__text-container" style="flex: 2; padding-left: 20px; font-size: 30px;">
+                    <p>Hello! My name is Kloe, and I am a passionate computer science major
+                    with a strong background in python, html, css, and java. With 3 years
+                    of experience in the industry, I have honed my skills in microsoft, web
+                    and development, enabling me to deliver exceptional results in every
+                    project I undertake!</p>
+                    <a href="#section3" style="display: flex; justify-content: flex-start; align-items: center;">
+                        <img src="https://media4.giphy.com/media/aAXohGrt8XiisNu1fO/giphy.gif?cid=6c09b9520tlhfmo9nb5vigyqswyuqq1ryqdb4kfqev5ymfun&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s"
+                             alt="Learn More"
+                             style="width: 50px; height: 50px; vertical-align: middle; margin-top: 10px;" />
+                    </a>
+                </div>
+            </div>
+        </section>
     </section>
+    
     <section id="section3">
-        <h2>Section 3</h2>
-        <p>This is Section 3.</p>
-    </section>
-    <section id="section4">
-        <h2>Section 4</h2>
-        <p>This is Section 4.</p>
-    </section>
+        <section class="container">
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <img id="slide-1" src="IMG_7693.jpg"  />
+                    <img id="slide-2" src="IMG_0538.jpg"  />
+                    <img id="slide-3" src="IMG_5745.jpg"  />
+                    <img id="slide-4" src="IMG_6068.jpg"  />
+                    <img id="slide-5" src="IMG_6612.jpg"  />
+                    <img id="slide-6" src="IMG_7138.jpg"  />
+                    <img id="slide-7" src="IMG_3864.jpg" />
 
-    <script src="script.js"></script>
+                </div>
+                <div class="slider-nav">
+                    <a href="#slide-1"></a>
+                    <a href="#slide-2"></a>
+                    <a href="#slide-3"></a>
+                    <a href="#slide-4"></a>
+                    <a href="#slide-5"></a>
+                    <a href="#slide-6"></a>
+                    <a href="#slide-7"></a>
+                </div>
+            </div>
+        </section>
+     </section>
 </body>
 </html>
