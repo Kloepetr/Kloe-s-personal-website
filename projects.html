@@ -118,6 +118,9 @@ h1 {
   border-radius: 5px; /* Rounded corners */
   max-width: 1000px; /* Adjust max-width as needed */
   margin: 2px auto; /* Center the container horizontally */
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
 
 /* Styling the text inside the container */
@@ -183,6 +186,7 @@ h1 {
     border-color: rgb(163, 163, 163);
 }
 
+
   
 </style>
 </head>
@@ -193,84 +197,108 @@ h1 {
     <nav id="desktop-nav">
         <div class="logo"></div>
         <nav>
-          <div class="nav-links-container">
-            <ul class="nav-links">
-              <li><a href="index.html">Return to home</a></li>
-              <li><a href="experience.html">Experience</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="journey.html">My Journey</a></li>
-              <li><a href="sources.html">Sources</a></li>
-            </ul>
-          </div>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Return to home</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </div>
         </nav>
-      </nav>
+    </nav>
       
     <section id="projects">
-    <h1 class="title">BROWSE MY RECENT PROJECTS</h1>
-    <div class="experience-details-container">
-      <div class="about-containers">
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img
-              src="https://www.ankitparakh.com/wp-content/uploads/2021/09/NUT-ALLERGY-WEB-1024x1024.jpg"
-              alt="Project 1"
-              class="project-img"
-            />
-          </div>
-          <h2 class="experience-sub-title project-title">Are you Nuts</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://kloepetr.github.io/unit2-kloe/'"
-            >
-              Live demonstration
-            </button>
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="toggleParagraph('project1-objectives')"
-            >
-            Project objectives
-            </button>
-          </div>
-          <p id="project1-objectives" class="project-objectives" style="display: none;">
-            This game aims to educate kids 2-12 on the variation of nuts and non-nuts and what nuts are 
-            classified as "nuts" to effectively prevent them from consuming nut around their friends
-            with nut allergies. 
-          </p>
+        <h1 class="title">BROWSE MY RECENT PROJECTS</h1>
+        <div class="experience-details-container">
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img
+                        src="https://www.ankitparakh.com/wp-content/uploads/2021/09/NUT-ALLERGY-WEB-1024x1024.jpg"
+                        alt="Project 1"
+                        class="project-img"
+                    />
+                </div>
+                <h2 class="experience-sub-title project-title">Are you Nuts</h2>
+                <div class="btn-container">
+                    <button
+                        class="btn btn-color-2 project-btn"
+                        onclick="location.href='https://kloepetr.github.io/unit2-kloe/'"
+                    >
+                        Live demonstration
+                    </button>
+                    <button
+                        class="btn btn-color-2 project-btn"
+                        onclick="toggleParagraph('project1-objectives')"
+                    >
+                        Project objectives
+                    </button>
+                </div>
+                <p id="project1-objectives" class="project-objectives" style="display: none;">
+                    This game aims to educate kids 2-12 on the variation of nuts and non-nuts and what nuts are 
+                    classified as "nuts" to effectively prevent them from consuming nut around their friends
+                    with nut allergies. 
+                </p>
+            </div>
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img
+                        src="https://m.media-amazon.com/images/I/51jPo0RDFUL._SL500_.jpg"
+                        alt="Project 2"
+                        class="project-img"
+                    />
+                </div>
+                <h2 class="experience-sub-title project-title">The great gatsby</h2>
+                <div class="btn-container">
+                    <button
+                        class="btn btn-color-2 project-btn"
+                        onclick="location.href='https://github.com/Kloepetr/unit-3-kloe'"
+                    >
+                        Source code
+                    </button>
+                    <button
+                        class="btn btn-color-2 project-btn"
+                        onclick="toggleParagraph('project2-objectives')"
+                    >
+                        Project objectives
+                    </button>
+                </div>
+                <p id="project2-objectives" class="project-objectives" style="display: none;">
+                    The great gatsby is one of the most classic literature of all time. 
+                    This game allows teenagers to get a general plot of the story, and
+                    see if thet would be interested in reading the whole book. 
+                </p>
+            </div>
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img
+                        src="https://ftp.psu.ac.th/pub/linux-logo/tuxanim036.gif"
+                        alt="Project 3"
+                        class="project-img"
+                    />
+                </div>
+                <h2 class="experience-sub-title project-title">macos or linux</h2>
+                <div class="btn-container">
+                    <button
+                        class="btn btn-color-2 project-btn"
+                        onclick="location.href='https://github.com/Kloepetr/int-u4-project-23-24-starter-code'"
+                    >
+                        Source code
+                    </button>
+                    <button
+                        class="btn btn-color-2 project-btn"
+                        onclick="toggleParagraph('project3-objectives')"
+                    >
+                        Project objectives
+                    </button>
+                </div>
+                <p id="project3-objectives" class="project-objectives" style="display: none;">
+                    This game aims to tell users what operating system they want to use.
+                </p>
+            </div>
         </div>
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img
-              src="https://m.media-amazon.com/images/I/51jPo0RDFUL._SL500_.jpg"
-              alt="Project 2"
-              class="project-img"
-            />
-          </div>
-          <h2 class="experience-sub-title project-title">The great gatsby</h2>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="location.href='https://github.com/Kloepetr/unit-3-kloe'"
-            >
-              Source code
-            </button>
-            <button
-              class="btn btn-color-2 project-btn"
-              onclick="toggleParagraph('project2-objectives')"
-            >
-              Project objectives
-            </button>
-          </div>
-          <p id="project2-objectives" class="project-objectives" style="display: none;">
-            The great gatsby is one of the most classic literature of all time. 
-            This game allows teenagers to get a general plot of the story, and
-            see if thet would be interested in reading the whole book. 
-          </p>
-        </div>
-      </div>
-    </div>
-</section>
+    </section>
 <footer>
 </footer>
 <script src="projects.js"></script>

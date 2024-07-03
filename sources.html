@@ -1,487 +1,471 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth Scrolling Navigation</title>
+    <title>Sources</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styling the individual articles */
-nav-links-container
+        #wrapper {
+            font-size: 20px;
+            text-align: center;
+        }
+        .animated {
+            transition: all 300ms ease-in-out;
+        }
 
-<style>
-    /* Importing Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+        /* Fade in, out Styles */
+        .fade-in, .fade-out.inactive {
+            opacity: 1;
+        }
+        .fade-in.inactive, .fade-out {
+            opacity: 0;
+        }
 
-/* Resetting default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.section__text__p1{
-    color: white;
-}
-/* Setting the body styles */
-body {
-  font-family: "Poppins", sans-serif;
-  background-size: cover;
-  background-image: url("https://img.freepik.com/free-vector/hand-drawn-olive-green-background_23-2149724843.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1719792000&semt=ais_user");
-}
+        /* Slide In Styles */
+        .slide-in-left {
+            transform: translateX(0);
+        }
+        .slide-in-left.inactive {
+            transform: translateX(-30%);
+        }
+        .slide-in-right {
+            transform: translateX(0);
+        }
+        .slide-in-right.inactive {
+            transform: translateX(130%);
+        }
 
-/* Styling the navigation bar */
-nav {
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  margin-top: 30px;
-}
-@layer base, rhythm, layout, components, default, overwrites;
+        /* Rotate Styles */
+        .rotate-ccw-90 {
+            transform: rotateZ(0);
+        }
+        .rotate-ccw-90.inactive {
+            transform: rotateZ(-90deg);
+        }
 
-html {
-  /* Create a snapping rule on the html element */
-  scroll-snap-type: y mandatory;
+        /* Textbox Styles */
+        #textbox {
+            color: white;
+            font-size: 20px;
+            max-height: 300px;
+            overflow: auto;
+            padding: 10px;
+            border: none;
+            margin: 0 auto;
+            display: inline-block;
+        }
 
-  /* Create a timeline scope, so we can target any element on the page */
-  timeline-scope: --section, --main, --site-header;
-}
+        #title {
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 200px;
+            z-index: 9999;
+            opacity: 1;
+            color: white;
+            font-weight: bolder;
+        }
+        .sources-container {
+            position: relative;
+            display: inline-block;
+        }
+        .sourcesbuttons1 {
+            position: absolute;
+            top: 320px;
+            left: 20px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(227, 58, 28);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }
+        #codeImage1 {
+            display: none;
+            position: absolute;
+            top: 350px;
+            left: 20px;
 
-/* We'll want to match these colors for the best melty effect */
-/* But play around with them (and add a color to section) to see happens */
-body,
-.content {
-  background-color: var(--color-background, black);
-}
-
-main {
-  view-timeline: --main;
-}
-
-.section {
-  /* Creating a snapping rule on the section element */
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-
-  /* Attach the timeline to the section element*/
-  view-timeline: --section;
-
-  /* Set each section to the full dynamic height of the viewport */
-  height: 100dvh;
-}
-
-.content {
-  /* Fix the content, so it doesn't scroll with the section */
-  overflow: hidden;
-  position: fixed;
-  inset: 0;
-
-  /* Animate the content based on the section scrolling */
-  --contrast: 4;
-  --blur: 0.5rem;
-
-  animation: blink ease-in-out both;
-  animation-timeline: --section;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    filter: blur(var(--blur)) contrast(var(--contrast));
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  50% {
-    filter: blur(0) contrast(1);
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-/* 
-  This is a bit of a hack to get the indicator to work because I'm lazy.
-  We're translating the dot from the top to the bottom of its parent,
-  using the browser scroll position as the animation timeline.
-  It's not really matched up to the scrolling sections, only appears to be.
-*/
-.indicator::before {
-  animation: indicate linear both;
-  animation-timeline: --main;
-  animation-range: contain;
-}
-
-/* And we're manually setting the colors because see: lazy comment above */
-@keyframes indicate {
-  0% {
-    --color-indicator: var(--color-primary);
-    transform: translateY(0);
-  }
-
-  25% {
-    --color-indicator: var(--color-yellow);
-  }
-
-  50% {
-    --color-indicator: var(--color-secondary);
-  }
-
-  75% {
-    --color-indicator: var(--color-red);
-  }
-
-  100% {
-    --color-indicator: var(--color-purple);
-    transform: translateY(
-      calc(var(--indicator-total-height) - var(--indicator-size))
-    );
-  }
-}
-
-/* Remove gradient indicator on scroll-to-end (visible on small screens */
-
-.site-header label:last-of-type {
-  view-timeline: --site-header inline;
-}
-
-.site-header::after {
-  animation: fade-scroll ease-in-out both;
-  animation-timeline: --site-header;
-  animation-range: entry-crossing;
-}
-
-/* Change animation based on radio checked */
-body:has([value="horizontal-scroll"]:checked) .content {
-  /* 
-    The only reason we're repeat these two properties instead of simply 
-    setting `animation-name` is so the polyfill will pick them up 
-    They're flaky though and tend to get stuck. You might need to
-    refresh the page and select an option before scrolling
-  */
-  animation: horizontal-scroll ease-in-out both;
-  animation-timeline: --section;
-}
+        }
 
 
-/* Alternative animations */
-/* Very cool, try it */
-@keyframes horizontal-scroll {
-  0% {
-    transform: translate3d(100%, 0%, 0);
-  }
+        .sourcesbuttons4 {
+            position: absolute;
+            bottom: 400px;
+            right: 550px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(187, 227, 28);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
 
-  50% {
-    transform: none;
-  }
+        #codeImage4 {
+            display: none;
+            position: absolute;
+            top: 475px;
+            right: 550px;
+        }
 
-  100% {
-    transform: translate3d(-100%, 0%, 0);
-  }
-}
+        .sourcesbuttons5 {
+            position: absolute;
+            bottom: 200px;
+            right: 400px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(250, 250, 250);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage5 {
+            display: none;
+            position: absolute;
+            top: 600px;
+            right: 500px;
+        }
 
+        .sourcesbuttons2 {
+            position: absolute;
+            bottom: 200px;
+            right: 400px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(141, 22, 97);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage2 {
+            display: none;
+            position: absolute;
+            top: 600px;
+            right: 500px;
+        }
+        .sourcesbuttons3 {
+            position: absolute;
+            bottom: 200px;
+            right: 400px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(45, 117, 60);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage3 {
+            display: none;
+            position: absolute;
+            top: 600px;
+            right: 500px;
+        }
 
-
-/* 
-  The actual page styling is in a different stylesheet to not clutter
-  this pen with irrelevant or confusing code
-
-  https://codepen.io/giana/pen/rNRzgRj
-*/
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-links {
-  gap: 2rem;
-  list-style: none;
-  font-size: 1.5rem;
-}
-
-a {
-  color: rgb(230, 225, 157);
-  text-decoration: none;
-  text-decoration-color: white;
-}
-
-a:hover {
-  color: rgb(20, 109, 38);
-  text-decoration: underline;
-  text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
-}
-
-section {
-  padding: 60px 20px;
-  margin-top: 60px;
-  height: 100vh; /* Make each section cover the entire viewport height */
-}
-
-.logo {
-  font-size: 2rem;
-}
-
-.logo:hover {
-  cursor: default;
-}
-
-/* Setting up Open Sans font */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-
-/* Defining color variables */
-$crimson: lighten(crimson, 5%);
-$tomato: lighten(tomato, 5%);
-
-html, body, h1 {
-  margin: 0;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-}
-
-.footer {
-  padding: 20px;
-}
-
-/* Styling header */
-h1 {
-  font-size: 120px;
-  line-height: 1;
-  color: white;
-}
+        .sourcesbuttons6 {
+            position: absolute;
+            bottom: 200px;
+            right: 400px;
+            color:rgb(255, 255, 255);
+            background-color: rgb(14, 26, 193);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage6 {
+            display: none;
+            position: absolute;
+            top: 300px;
+            right: 500px;
+        }
 
 
+        .sourcesbuttons7 {
+            position: absolute;
+            bottom: 500px;
+            right: 400px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(60, 147, 155);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage7 {
+            display: none;
+            position: absolute;
+            top: 300px;
+            right: 500px;
+        }
 
-/* Centering the experience-details-container */
-.experience-details-container {
-  display: flex;
-  justify-content: center;
-  align-items: 50%å;
-  opacity: 1;
-  margin: 2px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0); /* Adjust background color and opacity as needed */
-  border-radius: 5px; /* Rounded corners */
-  max-width: 1000px; /* Adjust max-width as needed */
-  margin: 2px auto; /* Center the container horizontally */
-}
 
-/* Styling the text inside the container */
-.experience-details-container .details-container {
-  text-align: center;
-  color: #fff; /* Adjust text color as needed */
-  padding: 10px; /* Add padding for some space inside the text boxes */
-}
+        .sourcesbuttons8 {
+            position: absolute;
+            bottom: 300px;
+            right: 400px;
+            color:rgb(255, 255, 255);
+            background-color: rgb(13, 63, 20);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage8 {
+            display: none;
+            position: absolute;
+            top: 300px;
+            right: 500px;
+        }
 
-/* Styling the individual articles */
-.experience-details-container .details-container .article-container article {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 10px; /* Add padding for some space inside the articles */
-  background-color: rgba(255, 255, 255, 0); /* Light background color for articles */
-  border-radius: 5px; /* Rounded corners for articles */
-  max-width: 300px; /* Limit the maximum width */
-  margin: 10px auto; /* Center the articles horizontally */
-}
+        .sourcesbuttons9 {
+            position: absolute;
+            bottom: 300px;
+            right: 400px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(58, 90, 4);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage9 {
+            display: none;
+            position: absolute;
+            top: 300px;
+            right: 500px;
+        }
 
-.experience-details-container .details-container .article-container article img.icon {
-  width: 50px; /* Adjust icon size as needed */
-  height: auto;
-}
+        .sourcesbuttons10 {
+            position: absolute;
+            bottom: 300px;
+            right: 400px;
+            color:rgb(0, 0, 0);
+            background-color: rgb(179, 166, 23);
+            width:160px;
+            height:40px;
+            font-weight:bolder;
+        }       
+        #codeImage10 {
+            display: none;
+            position: absolute;
+            top: 300px;
+            right: 500px;
+        }
 
-.experience-details-container .details-container .article-container article h3 {
-  font-size: 24px; /* Adjust font size as needed */
-  margin-bottom: 5px;
-}
-
-.experience-details-container .details-container .article-container article p {
-  font-size: 16px; /* Adjust font size as needed */
-}
-#projects {
-    position: relative;
-    min-height: 40px;
-    min-width: 40px;
-}
-
-.color-container {
-    border-color: rgb(163, 163, 163);
-}
-
-.project-img {
-    border-radius: 2rem;
-    width: 400px;  /* Set a fixed width */
-    height: 400px; /* Set a fixed height */
-    object-fit: cover; /* Ensure the image covers the specified dimensions */
-}
-.color-container{
-    background-image: url("https://img.freepik.com/free-photo/yellow-green-watercolor_95678-195.jpg?w=2000&t=st=1719917923~exp=1719918523~hmac=520960f3faeedf8200f3654b5d24c13ebed37d6017a7a40d084d8c31c005295b");
-    border-radius: 2rem;
-}
-.project-title {
-    margin: 1rem;
-    color: rgb(255, 255, 255);
-}
-
-.project-btn {
-    color: black;
-    border-color: rgb(163, 163, 163);
-}
-
-#contact {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 70vh;
-  }
-  
-  .contact-info-upper-container {
-    display: flex;
-    justify-content: center;
-    border-radius: 2rem;
-    border: rgb(53, 53, 53) 0.1rem solid;
-    border-color: rgb(163, 163, 163);
-    background: (250, 250, 250);
-    margin: 2rem auto;
-    padding: 0.5rem;
-  }
-  
-  .contact-info-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 1rem;
-    
-  }
-  
-  .contact-info-container p {
-    font-size: larger;
-  }
-  
-  .contact-icon {
-    cursor: default;
-  }
-  
-  .email-icon {
-    height: 2.5rem;
-  }
-  
-  
-</style>
+    </style>
 </head>
 <body>
-    <!-- Button to return to the top -->
-    </a>
     <nav id="desktop-nav">
         <div class="logo"></div>
         <nav>
-          <div class="nav-links-container">
-            <ul class="nav-links">
-              <li><a href="index.html">Return to home</a></li>
-              <li><a href="experience.html">Experience</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="journey.html">My Journey</a></li>
-              <li><a href="sources.html">Sources</a></li>
-            </ul>
-          </div>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Return to home</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </div>
         </nav>
-      </nav>
-    </section> 
-
-<header class="site-header">
-    <h1 class="sr-only">Scrollnapping animations</h1>
-
-    <!-- Because Chrome crashes if an overflow is set on the fieldset while a named timeline is on a child element -->
-    <!-- ¯\_(ツ)_/¯ -->
-    <div class="fieldset-wrapper">
-      <fieldset>
-        <legend class="sr-only">Effects</legend>
-
-        <!-- radio buttons for each of the @keyframes above -->
-        <input type="radio" id="blink-effect" name="effect" value="blink" checked class="sr-only">
-        <label for="blink-effect">Blink</label>
-
-        <input type="radio" id="horizontal-scroll-effect" name="effect" value="horizontal-scroll" class="sr-only">
-        <label for="horizontal-scroll-effect">Horizontal scroll</label>
-
-        <input type="radio" id="backwards-scroll-effect" name="effect" value="backwards-scroll" class="sr-only">
-        <label for="backwards-scroll-effect">Backwards scroll</label>
-
-        <input type="radio" id="zoom-scroll-effect" name="effect" value="zoom-scroll" class="sr-only">
-        <label for="zoom-scroll-effect">Zoom scroll</label>
-      </fieldset>
-    </div>
-
-    <nav>
-      <ul class="indicator">
-        <li><a href="#snapping"><span class="sr-only">Snapping</span></a></li>
-        <li><a href="#scrolling"><span class="sr-only">Scrolling</span></a></li>
-        <li><a href="#layout"><span class="sr-only">Layout</span></a></li>
-        <li><a href="#transition"><span class="sr-only">Transition</span></a></li>
-        <li><a href="#caveats"><span class="sr-only">Caveats</span></a></li>
-      </ul>
     </nav>
-  </header>
-  <main>
-    <section id="snapping" class="section">
-      <div class="content">
-        <h2><strong>First</strong>, we set up the <em>snapping</em> points</h2>
-
-        <div class="text">
-          <img src="https://assets.codepen.io/197359/flower-white.png" alt="">
-          <p>We set the scrolling element, in this case our <code class="selector">HTML</code> element, to forcibly snap to the Y axis by using <code class="property">scroll-snap-type: y mandatory</code>.</p>
-
-          <p>And then we set <code class="selector">section</code> as the snapping elements by using <code class="property">scroll-snap-align: start</code>.</p>
+    <div id="wrapper">
+        <div id="title" class="fade-out">Sources</div>
+        <button class="btn btn-color-2 project-btn" onclick="toggleParagraph('links')">
+            links
+        </button>
+        <div id="textbox" style="display: none;">
+            <p id="links" class="links">          
+                <a href="https://www.wix.com/blog/best-website-designs?utm_source=google&utm_medium=cpc&utm_campaign=21334177635^168715662891^search%20-%20dsa&experiment_id=^^701024146055^&gad_source=1&gclid=CjwKCAjw4f6zBhBVEiwATEHFVqxhR_tqVrYhjBEh3kY2yq8rrsiH-uCEfYeiv47S5UybqCzKk-zvQBoCPmQQAvD_BwE#viewer-33r18" target="_blank">Wix Best Website Designs</a>
+                <br>
+                <a href="https://camillemormal.com/" target="_blank">Camille Mormal, vertical scrolling</a>
+                <br>
+                <a href="https://youtu.be/m-pksep7NfY?si=CkArGkVmX4TLHFPu" target="_blank">Side Scroll</a>
+                <br>
+                <a href="https://youtu.be/uV8kH5RgSZU?si=7HkVkJarMEOkpVHw" target="_blank">Page Turning effect</a><br>
+                <a href="https://youtu.be/KaxP4to5szQ?si=UrvGZCHta5cwD4WL" target="_blank">How to get higher quality image</a>
+                <br>
+                <a href="https://youtu.be/PkADl0HubMY?si=6wNVE8Vfng2OsmXa" target="_blank">Introduction Page</a><br>
+                <a href="https://www.youtube.com/watch?v=gE-Yuu2eEio&list=PLKexSoOYRHT849tv6SrXDSKvEh1LEO6Gb&index=4" target="_blank">YouTube Page Scrolling Effect</a><br>
+                <a href="https://codepen.io/skillthrive/pen/jOzVLGR?product_id=OSdSmf8U8JL72Ydt5HfrEQ%3D%3D&product_permalink=cgybb&sale_id=iA35LG-iu7nz7ie8ABmglw%3D%3D" target="_blank">gallery template </a><br>
+                <a href="https://codepen.io/SgiobairOg/pen/mmGqpY" target="_blank">text slide in transition</a>
+            </p>
         </div>
-      </div>
-    </section>
-    <section id="scrolling" class="section">
-      <div class="content">
-        <h2><strong>Next</strong>, we set up the <em>scrolling</em> animation</h2>
-
-        <div class="text">
-          <img src="https://assets.codepen.io/197359/flower-yellow.png" alt="">
-          <p>We track the <code class="property">view()</code> position of the <code class="selector">section</code> elements using the named timeline <code class="property">view-timeline: --section;</code>. We had previously set the <code class="property">timeline-scope: --section</code> up in our <code class="selector">HTML</code> element, so we can access it from anywhere in the document.</p>
-
-          <p>We animate the <code class="selector">.content</code> children using <code class="property">animation-timeline: --section;</code>. The <code class="selector">.content</code> element will now animate based on its parent <code class="selector">section</code>'s position. This is important due to how we're handling the layout in the next section.</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="animated fade-in">Index.html (home page)</h1>
+        <h3 class="animated fade-in"> This was personally the hardest page for me to do, I spent a long time adjusting how to make the slideshow
+            effect work, <br>but it was very worth it in the end. Thanks to Lazorus, I was able to fork the template of the slide <br>show and integrate
+            it here. 
+        </h3>
+        <div class="sources-container">
+            <img src="indexhtml.png" alt="Source Image 1" style="height: 850px; width: 1600px;">
+            
+            <button class="sourcesbuttons1" onclick="toggleCode('codeImage1', this)">Show Code</button>
+            <img id="codeImage1" src="source1.png" alt="code1" style="height:50px; width:900px;">
+            
+            <button class="sourcesbuttons4" onclick="toggleCode('codeImage4', this)">Show Code</button>
+            <img id="codeImage4" src="source2.png" alt="code4" style="height:125px; width:480px;">
+            
+            <button class="sourcesbuttons5" onclick="toggleCode('codeImage5', this)">Show Code</button>
+            <img id="codeImage5" src="source5.png" alt="code5" style="height:300px; width:480px;">
         </div>
-      </div>
-    </section>
-    <section id="layout" class="section">
-      <div class="content">
-        <h2><strong>Then</strong>, we position a <em>fixed</em> layout</h2>
-
-        <div class="text">
-          <img src="https://assets.codepen.io/197359/flower-blue.png" alt="">
-          <p>We set the <code class="selector">.content</code> elements to <code class="property">position: fixed</code>, so they're removed from the normal document flow and stack on top of each other, giving them a solid background, so only one is visible at a time.</p>
-
-          <p>Their parent <code class="selector">section</code>s are positioned as normal in the layer below, taking up space, scroll-snapping, and powering the <code class="property">animation-timeline</code>.</p>
+        <br>
+        <br>
+        <h1 class="animated fade-in">Index.html (About me)</h1>
+        <h3 class="animated fade-in"> This was a simple introduction on who I am, what I'm interested in, I only had to adjust the margins 
+            around the about me picture, and play around with the layout of the text-container. The positions are shown in the css file, 
+            which I do not have in my sources as of now. However, you can check out my github for the sourcecode for this entire website.
+        </h3>
+        <div class="sources-container">
+            <img src="aboutme.png" alt="Source Image 2" style="height: 900px; width: 1600px;">
+            
+            <button class="sourcesbuttons1" onclick="toggleCode('codeImage2', this)">Show Code</button>
+            <img id="codeImage2" src="sources2.png" alt="code1" style="height:150px; width:500px;">
+            
+            <button class="sourcesbuttons4" onclick="toggleCode('codeImage3', this)">Show Code</button>
+            <img id="codeImage3" src="source4.png" alt="code4" style="height:150px; width:890px;">
         </div>
-      </div>
-    </section>
-    <section id="transition" class="section">
-      <div class="content">
-        <h2><strong>Finally</strong>, we create the <em>transition</em> effects</h2>
+        <br>
+        <br>
 
-        <div class="text">
-          <img src="https://assets.codepen.io/197359/flower-red.png" alt="">
-          <p>By setting the <code class="selector">.content</code> elements to <code class="property">position: fixed</code>, we can now transition between them without a visible scrolling movement.</p>
-
-          <p>We create a normal <code class="selector">@keyframe</code> animation to our liking to transition between them. Check the navigation menu to see different effects.</p>
+        <h1 class="animated fade-in">Index.html (Photo gallery)</h1>
+        <h3 class="animated fade-in"> This was meant to display my life living in Bloomington. The format is forked from the codepen<br>
+            website I linked above. 
+        </h3>
+        <div class="sources-container">
+            <img src="photogallery.png" alt="Source Image 3" style="height: 900px; width: 1600px;">
+            
+            <button class="sourcesbuttons6" onclick="toggleCode('codeImage6', this)">Show Code</button>
+            <img id="codeImage6" src="source6.png" alt="code6" style="height:500px; width:500px;">
         </div>
-      </div>
-    </section>
-    <section id="caveats" class="section">
-      <div class="content">
-        <h2><strong>Caveats</strong></h2>
 
-    </section>
+        <br>
+        <br>
 
-  </main>
+        <h1 class="animated fade-in">experience.html (languages and my journey)</h1>
+        <h3 class="animated fade-in"> The top is a container of languages that I put in a container<br>
+            I copied and pasted all of the logo of the languages and attached them next to one <br>
+            another. The bottom utilizes an animation, which allows the text and images to appear<br>
+            a few seconds after use scrolled with their mouse.
+        </h3>
+        <div class="sources-container">
+            <img src="experience.png" alt="Source Image 4" style="height: 900px; width: 1600px;">
+            
+            <button class="sourcesbuttons7" onclick="toggleCode('codeImage7', this)">Show Code</button>
+            <img id="codeImage7" src="source7.png" alt="code7" style="height:600px; width:600px;">
+            <button class="sourcesbuttons8" onclick="toggleCode('codeImage8', this)">Show Code</button>
+            <img id="codeImage8" src="source8.png" alt="code8" style="height:400px; width:1000px;">
+        </div>
+
+        <br>
+        <br>
+
+        <h1 class="animated fade-in">projects.html (Project display)</h1>
+        <h3 class="animated fade-in"> This was meant to display my life living in Bloomington. The format is forked from the codepen<br>
+            website I linked above. 
+        </h3>
+        <div class="sources-container">
+            <img src="projects.png" alt="Source Image 5" style="height: 900px; width: 1600px;">
+            
+            <button class="sourcesbuttons9" onclick="toggleCode('codeImage9', this)">Show Code</button>
+            <img id="codeImage9" src="source9.png" alt="code9" style="height:500px; width:700px;">
+        </div>
+
+        <br>
+        <br>
+
+        <h1 class="animated fade-in">contact.html (social media) </h1>
+        <h3 class="animated fade-in"> My linkedin, and email. The email redirets you to "mail", and 
+            the linkedin was tagged <br> the same way it did in homepage.
+        </h3>
+        <div class="sources-container">
+            <img src="contact.png" alt="Source Image 6" style="height: 900px; width: 1600px;">
+            
+            <button class="sourcesbuttons10" onclick="toggleCode('codeImage10', this)">Show Code</button>
+            <img id="codeImage10" src="source10.png" alt="code10" style="height:300px; width:700px;">
+        </div>
+        
+        
+
+
+
+    </div>
+    <footer>
+    </footer>
+    <script src="sources.js"></script>
+    <script>
+        'use strict';
+
+        var animatedElements = document.querySelectorAll('.animated');
+
+        var debounce = function debounce(func, wait = 20, immediate = true) {
+            var timeout;
+            return function () {
+                var context = this, args = arguments;
+                var later = function () {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
+
+        var checkAnimation = function checkAnimation() {
+            animatedElements.forEach(function (animatedElement) {
+                var slideInTrigger = window.scrollY + window.innerHeight - animatedElement.offsetHeight;
+                var isShowing = slideInTrigger > animatedElement.offsetTop;
+
+                if (isShowing) {
+                    animatedElement.classList.remove('inactive');
+                } else {
+                    animatedElement.classList.add('inactive');
+                }
+            });
+        };
+
+        var hideAnimated = function hideAnimated() {
+            animatedElements.forEach(function (animatedElement) {
+                animatedElement.classList.add('inactive');
+            });
+        }
+
+        window.addEventListener('scroll', debounce(checkAnimation, 20));
+
+        function toggleParagraph(paragraphId) {
+            const paragraph = document.getElementById(paragraphId);
+            const textbox = document.getElementById('textbox');
+            const button = document.querySelector(`button[onclick="toggleParagraph('${paragraphId}')"]`);
+            
+            if (paragraph.style.display === "none") {
+                paragraph.style.display = "block";
+                textbox.style.display = "block";
+                button.innerText = "Hide links";
+            } else {
+                paragraph.style.display = "none";
+                textbox.style.display = "none";
+                button.innerText = "links";
+            }
+        }
+
+        function toggleCode(imageId, button) {
+            var codeImage = document.getElementById(imageId);
+            if (codeImage.style.display === 'none' || codeImage.style.display === '') {
+                codeImage.style.display = 'block';
+                button.textContent = 'Hide Code';
+            } else {
+                codeImage.style.display = 'none';
+                button.textContent = 'Show Code';
+            }
+        }
+    </script>
 </body>
 </html>

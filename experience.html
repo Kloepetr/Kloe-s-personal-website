@@ -6,166 +6,260 @@
     <title>Smooth Scrolling Navigation</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styling the individual articles */
-        nav-links-container
-
-        /* Importing Google Fonts */
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
-        /* Resetting default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Add your existing styles here */
+            /* Styling the individual articles */
+            nav-links-container
+    
+            /* Importing Google Fonts */
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+    
+            /* Resetting default styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            .section__text__p1 {
+                color: white;
+            }
+    
+            /* Setting the body styles */
+            body {
+                font-family: "Poppins", sans-serif;
+                background-size: cover;
+                background-image: url("https://64.media.tumblr.com/8f174c60a60e1dbc52f8ddb4ebf47e42/953a007324f420a5-af/s400x600/5cb8d10cfd200debdd813037650d3971dcc35c05.gif");
+            }
+    
+            /* Styling the navigation bar */
+            nav {
+                justify-content: space-around;
+                align-items: center;
+                height: 60px;
+                margin-top: 30px;
+            }
+    
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+            }
+    
+            .nav-links {
+                gap: 2rem;
+                list-style: none;
+                font-size: 1.5rem;
+            }
+    
+            a {
+                color: rgb(47, 104, 34);
+                text-decoration: none;
+                text-decoration-color: white;
+            }
+    
+            a:hover {
+                color: rgb(204, 214, 67);
+                text-decoration: underline;
+                text-underline-offset: 1rem;
+                text-decoration-color: rgb(181, 181, 181);
+            }
+    
+            section {
+                padding: 60px 20px;
+                margin-top: 60px;
+                height: 100vh; /* Make each section cover the entire viewport height */
+            }
+    
+            .logo {
+                font-size: 2rem;
+            }
+    
+            .logo:hover {
+                cursor: default;
+            }
+    
+            /* Setting up Open Sans font */
+            @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+    
+            /* Defining color variables */
+            $crimson: lighten(crimson, 5%);
+            $tomato: lighten(tomato, 5%);
+    
+            html, body, h1 {
+                margin: 0;
+            }
+    
+            body {
+                font-family: 'Open Sans', sans-serif;
+            }
+    
+            .footer {
+                padding: 20px;
+            }
+    
+            /* Styling header */
+            h1 {
+                font-size: 120px;
+                line-height: 1;
+                color: white;
+            }
+    
+            /* Centering the experience-details-container */
+            .experience-details-container {
+                display: flex;
+                justify-content: center;
+                align-items: 50%;
+                opacity: 1;
+                margin: 2px;
+                padding: 20px;
+                background-color: rgba(0, 0, 0, 0); /* Adjust background color and opacity as needed */
+                border-radius: 5px; /* Rounded corners */
+                max-width: 1000px; /* Adjust max-width as needed */
+                margin: 2px auto; /* Center the container horizontally */
+            }
+    
+            /* Styling the text inside the container */
+            .experience-details-container .details-container {
+                text-align: center;
+                color: #fff; /* Adjust text color as needed */
+                padding: 10px; /* Add padding for some space inside the text boxes */
+            }
+    
+            /* Styling the individual articles */
+            .experience-details-container .details-container .article-container article {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                padding: 10px; /* Add padding for some space inside the articles */
+                background-color: rgba(255, 255, 255, 0); /* Light background color for articles */
+                border-radius: 5px; /* Rounded corners for articles */
+                max-width: 300px; /* Limit the maximum width */
+                margin: 10px auto; /* Center the articles horizontally */
+            }
+    
+            .experience-details-container .details-container .article-container article img.icon {
+                width: 50px; /* Adjust icon size as needed */
+                height: auto;
+            }
+    
+            .experience-details-container .details-container .article-container article h3 {
+                font-size: 24px; /* Adjust font size as needed */
+                margin-bottom: 5px;
+            }
+    
+            .experience-details-container .details-container .article-container article p {
+                font-size: 16px; /* Adjust font size as needed */
+            }
+    
+            /* New text container styling */
+            .text-container {
+                text-align: 25%;
+                color: white;
+                font-size: 20px;
+                margin-top: 20px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            }
+            
+            .image-row {
+                display: flex; /* Use flexbox to arrange images in a row */
+                gap:20px;
+            }
+            
+        #projects {
+            position: relative;
+            min-height: 40px;
+            min-width: 40px;
         }
 
-        .section__text__p1 {
-            color: white;
+        .color-container {
+            border-color: rgb(163, 163, 163);
         }
 
-        /* Setting the body styles */
-        body {
-            font-family: "Poppins", sans-serif;
-            background-size: cover;
-            background-image: url("https://img.freepik.com/free-vector/gradient-background-green-tones_23-2148373508.jpg");
+        .project-img {
+            border-radius: 2rem;
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
         }
 
-        /* Styling the navigation bar */
-        nav {
-            justify-content: space-around;
-            align-items: center;
-            height: 60px;
-            margin-top: 30px;
+        .project-title {
+            margin: 1rem;
+            color: rgb(114, 210, 30);
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
+        .project-btn {
+            color: black;
+            border-color: rgb(163, 163, 163);
         }
 
-        .nav-links {
-            gap: 2rem;
-            list-style: none;
-            font-size: 1.5rem;
-        }
-
-        a {
-            color: rgb(47, 104, 34);
-            text-decoration: none;
-            text-decoration-color: white;
-        }
-
-        a:hover {
-            color: rgb(204, 214, 67);
-            text-decoration: underline;
-            text-underline-offset: 1rem;
-            text-decoration-color: rgb(181, 181, 181);
-        }
-
-        section {
-            padding: 60px 20px;
-            margin-top: 60px;
-            height: 100vh; /* Make each section cover the entire viewport height */
-        }
-
-        .logo {
-            font-size: 2rem;
-        }
-
-        .logo:hover {
-            cursor: default;
-        }
-
-        /* Setting up Open Sans font */
-        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-
-        /* Defining color variables */
-        $crimson: lighten(crimson, 5%);
-        $tomato: lighten(tomato, 5%);
-
-        html, body, h1 {
-            margin: 0;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .footer {
-            padding: 20px;
-        }
-
-        /* Styling header */
-        h1 {
-            font-size: 120px;
-            line-height: 1;
-            color: white;
-        }
-
-        /* Centering the experience-details-container */
-        .experience-details-container {
-            display: flex;
-            justify-content: center;
-            align-items: 50%;
+        .text-container.visible {
             opacity: 1;
-            margin: 2px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0); /* Adjust background color and opacity as needed */
-            border-radius: 5px; /* Rounded corners */
-            max-width: 1000px; /* Adjust max-width as needed */
-            margin: 2px auto; /* Center the container horizontally */
+            transform: translateY(0);
         }
 
-        /* Styling the text inside the container */
-        .experience-details-container .details-container {
-            text-align: center;
-            color: #fff; /* Adjust text color as needed */
-            padding: 10px; /* Add padding for some space inside the text boxes */
+        .container {
+            padding: 2rem;
         }
-
-        /* Styling the individual articles */
-        .experience-details-container .details-container .article-container article {
+        
+        .slider-wrapper {
+            position: relative;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+        
+        .slider {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            padding: 10px; /* Add padding for some space inside the articles */
-            background-color: rgba(255, 255, 255, 0); /* Light background color for articles */
-            border-radius: 5px; /* Rounded corners for articles */
-            max-width: 300px; /* Limit the maximum width */
-            margin: 10px auto; /* Center the articles horizontally */
+            aspect-ratio: 16 / 9;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+            border-radius: 0.5rem;
+            -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+            scrollbar-width: none; /* Hide scrollbar Firefox */
         }
-
-        .experience-details-container .details-container .article-container article img.icon {
-            width: 50px; /* Adjust icon size as needed */
-            height: auto;
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .slider::-webkit-scrollbar {
+            display: none;
         }
-
-        .experience-details-container .details-container .article-container article h3 {
-            font-size: 24px; /* Adjust font size as needed */
-            margin-bottom: 5px;
+        
+        .slider img {
+            flex: 1 0 100%;
+            scroll-snap-align: start;
+            object-fit: cover;
         }
-
-        .experience-details-container .details-container .article-container article p {
-            font-size: 16px; /* Adjust font size as needed */
+        
+        .slider-nav {
+            display: flex;
+            column-gap: 1rem;
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
         }
-
-        /* New text container styling */
-        .text-container {
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            margin-top: 20px;
+        
+        .slider-nav a {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.75;
+            transition: opacity ease 250ms;
+        }
+        
+        .slider-nav a:hover {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <!-- Button to return to the top -->
-    </a>
-
     <nav id="desktop-nav">
         <div class="logo"></div>
         <nav>
@@ -175,7 +269,6 @@
                     <li><a href="experience.html">Experience</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="journey.html">My Journey</a></li>
                     <li><a href="sources.html">Sources</a></li>
                 </ul>
             </div>
@@ -224,21 +317,30 @@
                             </div>
                         </article>
                     </div>
-                    <div class="text-container">blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
-                        blah blah blah blah blah blah blah
+                    <div class="text-container">
+                        I started coding in my junior year of highschool, when my computer science teacher, Mr<br>
+                        Pizzo, introduced me to basic algorithms in python. I was thrilled to learn more, and<br>
+                        He inferred me to the <a href="https://nextech.org/students/catapult/"> Nextech Catapult </a>internship, where I learned how to make This<br>
+                        website. 
+                        <br>
+                        <div class="image-row">
+                            <img src="IMG_3305.jpg"  style="height: 350px; width: 300px;">
+                            <img src="IMG_3663.jpg"  style="height: 350px; width: 325px;">
+                            <img src="IMG_8910.jpg"  style="height: 350px; width: 275px;">
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Add a slight delay before showing the text container
+            setTimeout(function() {
+                document.querySelector('.text-container').classList.add('visible');
+            }, 1000); // Adjust the delay as needed (500ms in this case)
+        });
+    </script>
 </body>
 </html>
